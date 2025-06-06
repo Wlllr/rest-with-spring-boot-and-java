@@ -18,6 +18,58 @@ public class MathController {
         return convertToDouble(firstNumber) + convertToDouble(secondNumber);
     }
 
+    @RequestMapping("/subtraction/{firstNumber}/{secondNumber}")
+    public Double subtraction(
+            @PathVariable("firstNumber") String firstNumber,
+            @PathVariable("secondNumber") String secondNumber) throws Exception {
+
+        if (!isNumeric(firstNumber) || !isNumeric(secondNumber))
+            throw new UnsupportedOperationException("Please set a numeric value");
+        return convertToDouble(firstNumber) - convertToDouble(secondNumber);
+    }
+
+    @RequestMapping("/multiplication/{firstNumber}/{secondNumber}")
+    public Double multiplication(
+            @PathVariable("firstNumber") String firstNumber,
+            @PathVariable("secondNumber") String secondNumber
+    ) throws Exception {
+        if (!isNumeric(firstNumber) || !isNumeric(secondNumber))
+            throw new UnsupportedOperationException("Please set a numeric value");
+        return convertToDouble(firstNumber) * convertToDouble(secondNumber);
+    }
+
+    @RequestMapping("/division/{firstNumber}/{secondNumber}")
+    public Double division(
+            @PathVariable("firstNumber") String firstNumber,
+            @PathVariable("secondNumber") String secondNumber
+    ) throws Exception {
+        if (!isNumeric(firstNumber) || !isNumeric(secondNumber))
+            throw new UnsupportedOperationException("Please set a numeric value");
+
+        return convertToDouble(firstNumber) / convertToDouble(secondNumber);
+    }
+
+    @RequestMapping("/arithmetic/{firstNumber}/{secondNumber}")
+    public Double arithmeticMean(
+            @PathVariable("firstNumber") String firstNumber,
+            @PathVariable("secondNumber") String secondNumber
+    ) throws Exception {
+        if (!isNumeric(firstNumber) || !isNumeric(secondNumber))
+            throw new UnsupportedOperationException("Please set a numeric value");
+
+        return (convertToDouble(firstNumber) + convertToDouble(secondNumber)) / 2;
+    }
+
+    @RequestMapping("/squareRoot/{firstNumber}")
+    public Double squareRoot(
+            @PathVariable("firstNumber") String firstNumber
+    ) throws Exception {
+        if (!isNumeric(firstNumber))
+            throw new UnsupportedOperationException("Please set a numeric value");
+
+        return Math.pow(convertToDouble(firstNumber), 2);
+    }
+
     private Double convertToDouble(String strNumber) throws IllegalArgumentException {
         if (strNumber == null || strNumber.isEmpty())
             throw new UnsupportedOperationException("Please set a numeric value");

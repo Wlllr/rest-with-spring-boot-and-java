@@ -67,7 +67,7 @@ public class MathController {
         if (!isNumeric(firstNumber))
             throw new UnsupportedOperationException("Please set a numeric value");
 
-        return Math.pow(convertToDouble(firstNumber), 2);
+        return Math.sqrt(convertToDouble(firstNumber));
     }
 
     private Double convertToDouble(String strNumber) throws IllegalArgumentException {
